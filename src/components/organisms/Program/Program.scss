@@ -1,0 +1,35 @@
+.container {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.innerContainer {
+  width: 100%;
+
+  display: flex;
+  justify-content: stretch;
+  flex-flow: wrap;
+}
+
+.column {
+  border: 1px solid black;
+  flex-grow: 1;
+  margin: 24px;
+  min-width: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  border: 1px dashed black;
+  padding: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

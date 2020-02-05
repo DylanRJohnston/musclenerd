@@ -1,5 +1,6 @@
 import React from "react"
 import dom from "react-dom"
+import "normalize.css"
 
 import { App } from "../components/pages/App"
 

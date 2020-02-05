@@ -1,0 +1,29 @@
+.outerContainer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  align-items: center;
+}
+
+.innerContainer {
+  max-width: 1224px;
+  width: 100%;
+}
+
+.graphs {
+  // background-color: red;
+
+  display: flex;
+  justify-content: center;
+}
+
+.program {
+  // background-color: green;
+
+  display: flex;
+  justify-content: center;
+}

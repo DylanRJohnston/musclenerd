@@ -10,13 +10,12 @@ module.exports = {
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
   ],
   rules: {
     "import/order": [
-      "error",
+      1,
       {
         "newlines-between": "always",
         alphabetize: {
@@ -24,20 +23,23 @@ module.exports = {
         },
       },
     ],
+    "@typescript-eslint/unbound-method": 0,
     "@typescript-eslint/no-unused-vars": 0,
     "@typescript-eslint/explicit-function-return-type": [
-      "error",
+      1,
       {
         allowTypedFunctionExpressions: true,
+        allowExpressions: true,
       },
     ],
     "@typescript-eslint/member-delimiter-style": [
-      "error",
+      1,
       {
         multiline: {
           delimiter: "none",
         },
       },
     ],
+    "@typescript-eslint/no-use-before-define": 0,
   },
 }
