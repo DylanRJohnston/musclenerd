@@ -4,7 +4,6 @@ import React, { useCallback } from "react"
 import { DragDropContext, Droppable, DropResult, DroppableProvided } from "react-beautiful-dnd"
 import uuid from "uuid"
 
-import { Exercise } from "./Exercise"
 import styles from "./Program.scss"
 import { Workout } from "./Workout"
 
@@ -45,15 +44,22 @@ export const Program: React.FC<Props> = ({ program, updateProgram }) => {
 
   return (
     <div className={styles.container}>
-      <h1>Plan</h1>
+      <h1>Program</h1>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="sessions" type="column" direction="horizontal">
           {({ innerRef, droppableProps, placeholder }: DroppableProvided) => (
-            <div ref={innerRef} {...droppableProps} className={styles.innerContainer}>
-              {program.map((workout, index) => (
-                <Workout key={workout.id} workout={workout} index={index} />
-              ))}
-              {placeholder}
+            <div className={styles.fuck}>
+              <div className={styles.background}>
+                {program.map((_, key) => (
+                  <div key={key} className={styles.backgroundColumn} />
+                ))}
+              </div>
+              <div ref={innerRef} {...droppableProps} className={styles.innerContainer}>
+                {program.map((workout, index) => (
+                  <Workout key={workout.id} workout={workout} index={index} />
+                ))}
+                {placeholder}
+              </div>
             </div>
           )}
         </Droppable>

@@ -11,7 +11,7 @@ const newBench = (): Exercise => ({
   id: uuid(),
   muscle: "chest",
   name: "Bench Press",
-  reps: 5,
+  reps: Math.floor(Math.random() * 2) ? 5 : 10,
   sets: 5,
 })
 
@@ -19,19 +19,21 @@ const newBicepCurl = (): Exercise => ({
   id: uuid(),
   muscle: "bicep",
   name: "Bicep Curl",
-  reps: 15,
+  reps: Math.floor(Math.random() * 2) ? 8 : 15,
   sets: 4,
 })
 
-const newChestDay = (num?: number): Workout => ({
+const days = ["Mon", "Tue", "Wed", "Thu", "Fri"]
+
+const newChestDay = (num = 0): Workout => ({
   id: uuid(),
-  name: `Chest Day ${num || ""}`,
+  name: days[num],
   exercises: [...new Array(Math.floor(Math.random() * 5) + 2)].map(() =>
     Math.floor(Math.random() * 2) ? newBench() : newBicepCurl(),
   ),
 })
 
-const initialProgram: Program = [...new Array(4)].map((_, i) => newChestDay(i + 1))
+const initialProgram: Program = [...new Array(5)].map((_, i) => newChestDay(i))
 
 export const App: React.FC = () => {
   const [program, updateProgram] = useState<Program>(initialProgram)

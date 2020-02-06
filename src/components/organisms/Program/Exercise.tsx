@@ -26,9 +26,11 @@ export const Exercise = ({ exercise: { id, name, reps, sets }, index }: Props): 
           {...rowDraggable.draggableProps}
           {...rowDraggable.dragHandleProps}
         >
-          <h3>{name}</h3>
-          <span>Reps: {reps}</span>
-          <span>Sets: {sets}</span>
+          <div className={styles.name}>{name}</div>
+          <div className={styles.volume}>
+            <span className={styles.span}>Reps: {reps}</span>
+            <span className={styles.span}>Sets: {sets}</span>
+          </div>
         </div>
       )}
     </Draggable>

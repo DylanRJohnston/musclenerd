@@ -1,35 +1,82 @@
 .container {
+  position: relative;
   width: 100%;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
 .innerContainer {
+  position: relative;
   width: 100%;
 
   display: flex;
-  justify-content: stretch;
-  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+.fuck {
+  position: relative;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: stretch;
+}
+
+.backgroundColumn {
+  position: relative;
+  flex-grow: 1;
+}
+
+.backgroundColumn:nth-child(even) {
+  background-color: #eee;
 }
 
 .column {
-  border: 1px solid black;
-  flex-grow: 1;
-  margin: 24px;
-  min-width: 100px;
-
+  width: 500px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+}
+
+.title {
+  border-bottom: 1px solid grey;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 1.4em;
 }
 
 .row {
-  border: 1px dashed black;
-  padding: 8px;
+  box-sizing: border-box;
+  padding: 10px 0px;
+  margin: 0px 16px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
+
+  & > * + * {
+    margin-top: 8px;
+  }
+}
+
+.row + .row {
+  border-top: 1px solid lightgrey;
+}
+
+.name {
+  font-size: 1.2em;
+}
+
+.volume {
+  display: flex;
+
+  justify-content: space-between;
 }

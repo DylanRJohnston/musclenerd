@@ -10,6 +10,7 @@ interface Props {
 export const Dashboard: React.FC<Props> = ({ graphs, program }) => (
   <div className={styles.outerContainer}>
     <div className={styles.innerContainer}>
+      <h1>Charts Yo</h1>
       <div className={styles.graphs}>{graphs}</div>
       <div className={styles.program}>{program}</div>
     </div>

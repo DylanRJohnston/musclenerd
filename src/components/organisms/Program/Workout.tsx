@@ -1,5 +1,5 @@
 import React from "react"
-import { Draggable, Droppable, DraggableProvided } from "react-beautiful-dnd"
+import { Draggable, Droppable } from "react-beautiful-dnd"
 
 import { Exercise } from "./Exercise"
 import styles from "./Program.scss"
@@ -17,7 +17,7 @@ export interface Props {
 
 export const Workout = ({ workout, index }: Props): JSX.Element => (
   <Draggable draggableId={workout.id} index={index}>
-    {({ innerRef: workoutDragRef, draggableProps, dragHandleProps }: DraggableProvided) => (
+    {({ innerRef: workoutDragRef, draggableProps, dragHandleProps }) => (
       <Droppable droppableId={workout.id} type="row" direction="vertical">
         {({ innerRef: exerciseDropRef, droppableProps, placeholder }) => (
           <div
@@ -27,7 +27,7 @@ export const Workout = ({ workout, index }: Props): JSX.Element => (
             {...dragHandleProps}
             {...droppableProps}
           >
-            <h2>{workout.name}</h2>
+            <div className={styles.title}>{workout.name}</div>
             {workout.exercises.map((exercise, index) => (
               <Exercise key={exercise.id} exercise={exercise} index={index} />
             ))}
