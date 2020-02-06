@@ -59,6 +59,8 @@
     "fix": "yarn prettier --write && yarn eslint --fix",
     "build": "webpack",
     "dev": "webpack-dev-server",
-    "pipeline": "yarn lint && yarn test && yarn build"
+    "pipeline": "yarn lint && yarn test && yarn build",
+    "deploy": "gh-pages -d dist",
+    "ship": "yarn build && yarn deploy"
   }
 }
