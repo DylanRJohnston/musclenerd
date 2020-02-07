@@ -80,7 +80,7 @@ const foobar = (program: Program): RepRange[] =>
   pipe(
     program,
     chain(it => it.exercises),
-    map(it => tuple(it.name, toRepRange(it))),
+    map(it => tuple(Object.keys(movements[it.movement].muscles)[0], toRepRange(it))),
     fromFoldable(repRange, array),
     collect((muscle, repRange) => ({ muscle, ...repRange })),
   )
