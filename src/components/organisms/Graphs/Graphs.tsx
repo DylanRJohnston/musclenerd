@@ -15,6 +15,7 @@ import {
   YAxis,
 } from "recharts"
 
+import { Exercise } from "../../../domain/exercise"
 import { movements } from "../../../domain/movement"
 import { Program } from "../../../domain/program"
 
