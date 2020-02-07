@@ -1,26 +1,22 @@
-import { chain, map, reduce, array } from "fp-ts/lib/Array"
+import { array, chain, map } from "fp-ts/lib/Array"
 import { Monoid } from "fp-ts/lib/Monoid"
-import { fromFoldable, collect } from "fp-ts/lib/Record"
+import { collect, fromFoldable } from "fp-ts/lib/Record"
 import { semigroupSum as add } from "fp-ts/lib/Semigroup"
 import { pipe } from "fp-ts/lib/pipeable"
 import React from "react"
 import {
+  Bar,
+  BarChart,
   CartesianGrid,
   Legend,
-  Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
-  Text,
-  Label,
-  BarChart,
-  Bar,
 } from "recharts"
 
-import { Program } from "../Program"
-import { Exercise } from "../Program/Exercise"
+import { movements } from "../../../domain/movement"
+import { Program } from "../../../domain/program"
 
 import styles from "./Graphs.scss"
 
@@ -37,8 +33,12 @@ interface PerDayVolume {
 const perDayVolume = (program: Program): PerDayVolume[] =>
   program.map(it => ({
     name: it.name,
-    chest: it.exercises.filter(it => it.muscle === "chest").reduce((acc, x) => acc + x.sets, 0),
-    bicep: it.exercises.filter(it => it.muscle === "bicep").reduce((acc, x) => acc + x.sets, 0),
+    chest: it.exercises
+      .filter(it => movements[it.movement].muscles.chest)
+      .reduce((acc, x) => acc + x.sets, 0),
+    bicep: it.exercises
+      .filter(it => movements[it.movement].muscles.biceps)
+      .reduce((acc, x) => acc + x.sets, 0),
   }))
 
 interface PerMuscleVolume {
@@ -52,7 +52,7 @@ const perMuscleVolume = (program: Program): PerMuscleVolume[] =>
   pipe(
     program,
     chain(it => it.exercises),
-    map(it => tuple(it.muscle, it.sets)),
+    map(it => tuple(Object.keys(movements[it.movement].muscles)[0], it.sets)),
     fromFoldable(add, array),
     collect((muscle, volume) => ({ muscle, volume })),
   )
