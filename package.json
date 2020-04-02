@@ -59,7 +59,7 @@
     "webpack-dev-server": "^3.10.2"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "nyc mocha",
     "prettier": "prettier '{src,tests}/**/*.{ts,tsx}'",
     "eslint": "eslint '{src,tests}/**/*.{ts,tsx}'",
     "lint": "yarn prettier --check && yarn eslint",
