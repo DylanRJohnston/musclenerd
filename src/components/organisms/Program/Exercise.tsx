@@ -1,15 +1,16 @@
 import React from "react"
 
-import { Exercise } from "../../../domain/exercise"
-import { movements } from "../../../domain/movement"
+import { movements, Movements } from "../../../domain/movement"
 
 import styles from "./Program.scss"
 
-export interface Props {
-  data: Exercise
+interface Props {
+  movement: Movements
+  reps: number
+  sets: number
 }
 
-export const ExerciseCard: React.FC<Props> = ({ data: { reps, sets, movement } }) => (
+export const Exercise: React.FC<Props> = ({ movement, reps, sets }) => (
   <div className={styles.row}>
     <div className={styles.name}>{movements[movement].name}</div>
     <div className={styles.volume}>
