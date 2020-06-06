@@ -1,8 +1,8 @@
 extension:
-    - "ts"
-    - "tsx"
+  - "ts"
+  - "tsx"
 spec: "tests/**/*test.ts*"
 require:
-    - "ts-node/register/transpile-only"
-    - "ignore-styles"
-    - "jsdom-global/register"
+  - "ts-node/register/transpile-only"
+  - "ignore-styles"
+  - "jsdom-global/register"

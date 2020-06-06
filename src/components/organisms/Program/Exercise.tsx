@@ -10,7 +10,7 @@ interface Props {
   sets: number
 }
 
-export const Exercise: React.FC<Props> = ({ movement, reps, sets }) => (
+export const ExerciseCard: React.FC<Props> = ({ movement, reps, sets }) => (
   <div className={styles.row}>
     <div className={styles.name}>{movements[movement].name}</div>
     <div className={styles.volume}>
