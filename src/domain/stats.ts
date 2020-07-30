@@ -5,7 +5,6 @@ import { semigroupSum as add } from "fp-ts/lib/Semigroup"
 import { pipe } from "fp-ts/lib/pipeable"
 
 import { Exercise } from "./exercise"
-import { movements } from "./movement"
 import { Program } from "./program"
 import { Workout } from "./workout"
 
@@ -18,11 +17,9 @@ interface PerDayVolume {
 export const perDayVolume = (program: Program): PerDayVolume[] =>
   program.map(it => ({
     name: it.name,
-    chest: it.exercises
-      .filter(it => movements[it.movement].muscles.chest)
-      .reduce((acc, x) => acc + x.sets, 0),
+    chest: it.exercises.filter(it => it.movement.muscles.chest).reduce((acc, x) => acc + x.sets, 0),
     bicep: it.exercises
-      .filter(it => movements[it.movement].muscles.biceps)
+      .filter(it => it.movement.muscles.biceps)
       .reduce((acc, x) => acc + x.sets, 0),
   }))
 
@@ -34,7 +31,7 @@ interface PerMuscleVolume {
 const tuple = <T extends unknown[]>(...args: T): T => args
 
 const toMuscleVolume = (it: Exercise): [string, number] => [
-  Object.keys(movements[it.movement].muscles)[0],
+  Object.keys(it.movement.muscles)[0],
   it.sets,
 ]
 
@@ -76,7 +73,7 @@ export const perRepRangeVolume = (program: Program): RepRange[] =>
   pipe(
     program,
     flatMap(getExercises),
-    map(it => tuple(Object.keys(movements[it.movement].muscles)[0], toRepRange(it))),
+    map(it => tuple(Object.keys(it.movement.muscles)[0], toRepRange(it))),
     fromFoldable(repRange, array),
     collect((muscle, repRange) => ({ muscle, ...repRange })),
   )

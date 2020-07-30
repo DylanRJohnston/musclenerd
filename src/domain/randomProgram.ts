@@ -1,15 +1,16 @@
 import { Exercise } from "./exercise"
+import { movements } from "./movement"
 import { Program } from "./program"
 import { Workout } from "./workout"
 
 export const newBench = (): Exercise => ({
-  movement: "benchPress",
+  movement: movements.get("Bench Press")!,
   reps: Math.floor(Math.random() * 2) ? 5 : 10,
   sets: 5,
 })
 
 export const newBicepCurl = (): Exercise => ({
-  movement: "preacherCurl",
+  movement: movements.get("Preacher Curl")!,
   reps: Math.floor(Math.random() * 2) ? 8 : 15,
   sets: 4,
 })

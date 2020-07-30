@@ -23,9 +23,11 @@ export const Column: React.FC<Props> = ({ index, header, contents }) => (
             {...droppableProps}
           >
             {header}
-            {contents.map((cellContents, cellIndex) => (
-              <Cell key={cellIndex} index={cellIndex} contents={cellContents} />
-            ))}
+            <div className={styles.cells}>
+              {contents.map((cellContents, cellIndex) => (
+                <Cell key={cellIndex} index={cellIndex} contents={cellContents} />
+              ))}
+            </div>
             {placeholder}
           </div>
         )}

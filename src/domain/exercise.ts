@@ -1,7 +1,7 @@
-import { Movements } from "./movement"
+import { Movement } from "./movement"
 
 export interface Exercise {
-  movement: Movements
+  movement: Movement
   reps: number
   sets: number
 }

@@ -1,0 +1,35 @@
+.container {
+  overflow: scroll;
+  box-sizing: border-box;
+  padding: 4px;
+
+  display: flex;
+}
+
+.column {
+  flex: 1 0 auto;
+
+  &:nth-child(even) {
+    background-color: #eee;
+  }
+}
+
+.grouping {
+  margin: 0px;
+  padding: 10px;
+}
+
+.cells {
+  padding: 0px 10px;
+  border-top: 1px solid grey;
+}
+
+.cell {
+  font-size: 1.2em;
+  padding: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+  &:first-child {
+    border-top: none;
+  }
+}
