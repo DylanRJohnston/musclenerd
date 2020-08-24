@@ -58,7 +58,7 @@
     "ts-toolbelt": "^6.13.34",
     "typescript": "^3.9.3",
     "uuid": "^3.4.0",
-    "webpack": "^4.41.5",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.11.0"
   },
