@@ -21,7 +21,7 @@ export const fromIndex = <A>(index: number): Lens<A[], A> => ({
   set: a => modifyAt(index, () => a),
 })
 
-export const composeLens = <B, C>(bc: Lens<B, C>) => <A>(ab: Lens<A, B>): Lens<A, C> => ({
+export const composeLens =  <A, B, C>(ab: Lens<A, B>, bc: Lens<B, C>): Lens<A, C> => ({
   get: a => bc.get(ab.get(a)),
   set: c => a => ab.set(bc.set(c)(ab.get(a)))(a),
 })
@@ -48,4 +48,4 @@ export interface Compose {
 }
 
 export const compose: Compose = (...lens: Lens<unknown, unknown>[]) =>
-  lens.reduce((f, g) => composeLens(g)(f))
+  lens.reduce(composeLens)
