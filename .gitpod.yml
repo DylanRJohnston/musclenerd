@@ -2,5 +2,5 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: yarn install && yarn run build
+  - init: yarn install --frozen lockfile
     command: yarn run dev
