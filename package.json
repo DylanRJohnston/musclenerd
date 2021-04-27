@@ -26,7 +26,7 @@
     "@typescript-eslint/parser": "^2.34.0",
     "chai": "^4.2.0",
     "classnames": "^2.2.6",
-    "css-loader": "^3.4.2",
+    "css-loader": "^5.0.0",
     "d3-scale-chromatic": "^1.5.0",
     "error-overlay-webpack-plugin": "^0.4.1",
     "eslint": "^6.8.0",
